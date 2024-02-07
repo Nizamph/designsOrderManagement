@@ -18,9 +18,17 @@ import json2mq from 'json2mq';
 const SignUp = () => {
   const isMediumScreen = useMediaQuery((theme) => theme.breakpoints.down('md'));
   const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down('sm'));
+  const isLargeScreen = useMediaQuery((theme) => theme.breakpoints.up('lg'));
   const iphoneSE = useMediaQuery(
     json2mq({
       maxWidth: 376,
+    })
+  );
+
+  const bigScreen = useMediaQuery(
+    json2mq({
+      minWidth: 1366,
+      minHeight: 768,
     })
   );
 
@@ -56,7 +64,7 @@ const SignUp = () => {
             <Grid
               item
               xs={12}
-              marginLeft='181px'>
+              marginLeft='149px'>
               <img
                 src={Saly3}
                 alt='sali image'
@@ -69,7 +77,7 @@ const SignUp = () => {
       <Paper
         sx={{
           position: 'absolute',
-          maxWidth: !isSmallScreen ? '500px' : '326px',
+          maxWidth: !isSmallScreen ? '465px' : '326px',
           maxHeight: '741px',
           borderRadius: '40px',
           top: iphoneSE
@@ -78,15 +86,17 @@ const SignUp = () => {
             ? '8rem'
             : isMediumScreen
             ? '15rem'
-            : '4rem',
+            : bigScreen
+            ? '123px'
+            : '52px',
           left: iphoneSE
             ? '25px'
             : isSmallScreen
             ? '40px'
             : isMediumScreen
             ? '10rem'
-            : '29rem',
-          padding: '49px',
+            : '28rem',
+          padding: iphoneSE ? '35px' : '49px',
           zIndex: '10',
         }}>
         <Grid
@@ -137,7 +147,7 @@ const SignUp = () => {
           }}>
           <TextField
             id='outlined-basic'
-            label='Outlined'
+            label='email'
             fullWidth
           />
           <Grid
@@ -156,7 +166,7 @@ const SignUp = () => {
           </Grid>
           <TextField
             id='outlined-basic'
-            label='name'
+            label='password'
           />
           <Button
             sx={{
@@ -181,7 +191,7 @@ const SignUp = () => {
             alignItems='start'>
             <Grid
               marginTop='144px'
-              marginLeft='200px'>
+              marginLeft='170px'>
               <img
                 src={Saly2}
                 alt='sali image'

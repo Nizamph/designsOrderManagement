@@ -82,11 +82,11 @@ export default function BasicModal() {
               disableElevation
               variant='contained'
               sx={{
-                bgcolor: 'primary.main',
+                bgcolor: '#D92D20',
                 fontSize: '1rem',
                 width: '170px',
                 height: '44px',
-                '&:hover': { bgcolor: 'primary.main' },
+                '&:hover': { bgcolor: '#D92D20' },
               }}>
               Confirm
             </Button>

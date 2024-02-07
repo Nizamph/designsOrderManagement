@@ -11,13 +11,17 @@ import SignIn from './SignIn';
 import '@fontsource/poppins';
 import SignUp from './SignUp';
 import Invoice from './Invoice';
+import Dashboard from './Dashboard';
+import ProgressBar from './ProgressBar';
+import MultiselectorInbox from './MultiselectorInbox';
 
 function App() {
   const theme = createTheme({
     palette: {
-      primary: {
-        main: red[800],
-      },
+      // primary: {
+      //   // main: red[800],
+      //   dark: 'black',
+      // },
       secondary: {
         main: green[400],
         dark: grey[700],
@@ -57,6 +61,7 @@ function App() {
                 {' '}
                 <BasicModal />
                 <PaymentRecordModal />
+                <ProgressBar />
               </>
             }
           />
@@ -71,6 +76,14 @@ function App() {
           <Route
             path='/invoice'
             element={<Invoice />}
+          />
+          <Route
+            path='/dashboard'
+            element={<Dashboard />}
+          />
+          <Route
+            path='/multiselector'
+            element={<MultiselectorInbox />}
           />
         </Routes>
       </ThemeProvider>

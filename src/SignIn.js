@@ -26,6 +26,12 @@ const SignIn = () => {
       maxWidth: 376,
     })
   );
+  const bigScreen = useMediaQuery(
+    json2mq({
+      minWidth: 1366,
+      minHeight: 768,
+    })
+  );
 
   console.log('isMediumScreen', isMediumScreen);
   console.log('isSmallScreen', isSmallScreen);
@@ -61,7 +67,7 @@ const SignIn = () => {
               position='relative'
               item
               xs={12}
-              marginLeft='181px'>
+              marginLeft='165px'>
               <img
                 src={Saly3}
                 alt='sali image'
@@ -83,6 +89,8 @@ const SignIn = () => {
             ? '8rem'
             : isMediumScreen
             ? '15rem'
+            : bigScreen
+            ? '123px'
             : '2rem',
           left: iphoneSE
             ? '25px'
@@ -90,11 +98,8 @@ const SignIn = () => {
             ? '40px'
             : isMediumScreen
             ? '10rem'
-            : '29rem',
+            : '28rem',
           padding: iphoneSE ? '35px' : '49px',
-          '@media (max-width: 320px)': {
-            top: ' 0rem', // Adjust styles for iPhone SE
-          },
           zIndex: '10',
         }}>
         <Grid
@@ -216,7 +221,7 @@ const SignIn = () => {
             alignItems='start'>
             <Grid
               marginTop='144px'
-              marginLeft='200px'>
+              marginLeft='170px'>
               <img
                 src={Saly2}
                 alt='sali image'
