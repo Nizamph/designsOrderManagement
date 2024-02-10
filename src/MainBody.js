@@ -14,6 +14,9 @@ import StatCard from './StatCard';
 import SummaryTable from './SummaryTable';
 import DataTab from './Datatab';
 import CIrcularProgressBar from './CIrcularProgressBar';
+import Project from './icons/projectIcon.png';
+import ResourseIcon from './icons/resources.png';
+import StatIcon from './icons/statIcon.png';
 const totalProjects = 150;
 const completedProjects = 30;
 const ongoingProjects = 30;
@@ -50,7 +53,7 @@ const MainBody = () => {
             </Typography>
           </Grid>
           <Grid
-            width='10%'
+            width={isSmallScreen ? '30%' : '10%'}
             display='flex'
             flexDirection='column'
             marginRight='20px'
@@ -76,26 +79,30 @@ const MainBody = () => {
           maxWidth='100%'
           display='flex'
           gap='9px'
-          marginRight='20px'
-          marginLeft='20px'
-          justifyContent='space-evenly'
+          marginRight='6px'
+          marginLeft='6px'
+          justifyContent='space-between'
           flexWrap='wrap'
           alignItems='center'>
           <StatCard
             type={'Total revenue'}
             totalFigure={'$50000'}
+            iconName={StatIcon}
           />
           <StatCard
             type={'Projects'}
             totalFigure={'95/100'}
+            iconName={Project}
           />
           <StatCard
             type={'Time spent'}
             totalFigure={'1022/1300 Hrs'}
+            iconName={ResourseIcon}
           />
           <StatCard
             type={'Resources'}
             totalFigure={'101/120'}
+            iconName={Project}
           />
         </Grid>
       </Grid>
@@ -103,13 +110,14 @@ const MainBody = () => {
         width='100%'
         display='flex'
         flexDirection={isSmallScreen ? 'column' : 'row'}
+        gap={isSmallScreen ? '14px' : ''}
         alignItems='center'
         justifyContent='space-between'>
         <Paper
           sx={{
-            width: '55%',
+            width: !isSmallScreen ? '55%' : '100%',
             padding: '14px',
-            marginLeft: '20px',
+            marginLeft: !isSmallScreen ? '20px' : '',
             minHeight: '359px',
             borderRadius: '14px',
           }}>
@@ -124,7 +132,7 @@ const MainBody = () => {
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'space-around',
-            marginRight: '20px',
+            marginRight: !isSmallScreen ? '20px' : '',
             borderRadius: '14px',
             position: 'relative',
           }}>
@@ -214,9 +222,9 @@ const MainBody = () => {
         justifyContent='space-between'>
         <Paper
           sx={{
-            width: '55%',
+            width: !isSmallScreen ? '55%' : '100%',
             padding: '14px',
-            marginLeft: '20px',
+            marginLeft: !isSmallScreen ? '20px' : '',
             borderRadius: '14px',
           }}>
           <DataTab />
@@ -225,7 +233,7 @@ const MainBody = () => {
           sx={{
             width: '39%',
             padding: '8px',
-            marginRight: '20px',
+            marginRight: !isSmallScreen ? '20px' : '',
             borderRadius: '14px',
           }}></Paper>
       </Grid>

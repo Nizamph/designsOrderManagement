@@ -41,9 +41,9 @@ const SummaryTable = () => {
         display='flex'
         flexDirection={isSmallScreen ? 'column' : 'row'}
         justifyContent='space-between'
-        alignItems='center'>
+        alignItems={!isSmallScreen ? 'center' : 'start'}>
         <Grid
-          width='30%'
+          width={!isSmallScreen ? '30%' : '100%'}
           marginLeft='15px'>
           <Typography
             fontSize='16px'

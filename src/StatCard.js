@@ -3,11 +3,11 @@ import React from 'react';
 import statIcon from './icons/statIcon.png';
 import ArrowUp from './icons/upArrow.png';
 import ArrowDown from './icons/arrow-right.png';
-const StatCard = ({ growth, type, totalFigure }) => {
+const StatCard = ({ growth, type, totalFigure, iconName }) => {
   return (
     <Paper
       sx={{
-        width: '265px',
+        width: '242px',
         maxHeight: '194px',
         padding: '18px',
         display: 'flex',
@@ -19,7 +19,7 @@ const StatCard = ({ growth, type, totalFigure }) => {
         margin: '1px',
       }}>
       <img
-        src={statIcon}
+        src={iconName}
         style={{ width: '46px', height: '46px' }}
       />
       <Typography
