@@ -9,9 +9,11 @@ import React from 'react';
 import Header from './Header';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import MainBody from './MainBody';
+import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import SchoolIcon from '@mui/icons-material/School';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import { Link } from 'react-router-dom';
+import { PersonPinCircleOutlined } from '@mui/icons-material';
 
 const Dashboard = () => {
   return (
@@ -22,7 +24,7 @@ const Dashboard = () => {
       justifyContent='start'
       minHeight='100vh'>
       <Grid
-        width='15%'
+        width='16%'
         position='fixed'
         zIndex='10'
         minHeight='100vh'
@@ -45,50 +47,99 @@ const Dashboard = () => {
         <Grid
           height='70%'
           display='flex'
+          width='100%'
           flexDirection='column'
           justifyContent='center'
           alignItems='center'
           marginTop='100px'>
-          <Grid color='white'>
-            <ListItemButton>
-              <ListItemIcon>
-                <DashboardIcon style={{ color: 'white' }} />
-              </ListItemIcon>
-              <ListItemText
-                primary='Dashboard'
-                color='white'
-              />
-            </ListItemButton>
+          <Grid
+            display='flex'
+            alignItems='center'
+            width='100%'
+            padding='16px'
+            justifyContent='center'>
+            <Grid
+              width='25%'
+              marginRight='10px'
+              textAlign='end'>
+              <DashboardIcon style={{ color: 'white' }} />
+            </Grid>
+            <Grid width='75%'>
+              <Typography
+                fontSize='15px'
+                color='white'>
+                Dashboard
+              </Typography>
+            </Grid>
           </Grid>
-          <Grid color='white'>
-            <ListItemButton>
-              <ListItemIcon>
-                <ManageAccountsIcon style={{ color: 'white' }} />
-              </ListItemIcon>
-              <ListItemText
-                primary='Manage Orders'
-                color='white'
-              />
-            </ListItemButton>
+          <Grid
+            display='flex'
+            alignItems='center'
+            width='100%'
+            padding='16px'
+            justifyContent='center'>
+            <Grid
+              width='25%'
+              marginRight='10px'
+              textAlign='end'>
+              <SchoolIcon style={{ color: 'white' }} />
+            </Grid>
+            <Grid width='75%'>
+              <Typography
+                fontSize='15px'
+                color='white'>
+                Manage orders
+              </Typography>
+            </Grid>
           </Grid>
-          <Grid color='white'>
-            <ListItemButton>
-              <ListItemIcon>
-                <SchoolIcon style={{ color: 'white' }} />
-              </ListItemIcon>
-              <ListItemText
-                primary='Dashboard'
-                color='white'
-              />
-            </ListItemButton>
+
+          <Grid
+            display='flex'
+            alignItems='center'
+            width='100%'
+            padding='16px'
+            justifyContent='center'>
+            <Grid
+              width='25%'
+              marginRight='10px'
+              textAlign='end'>
+              <PersonPinCircleOutlined style={{ color: 'white' }} />
+            </Grid>
+            <Grid width='75%'>
+              <Typography
+                fontSize='15px'
+                color='white'>
+                Register
+              </Typography>
+            </Grid>
+          </Grid>
+          <Grid
+            display='flex'
+            alignItems='center'
+            width='100%'
+            padding='16px'
+            justifyContent='center'>
+            <Grid
+              width='25%'
+              marginRight='10px'
+              textAlign='end'>
+              <AccountBoxIcon style={{ color: 'white' }} />
+            </Grid>
+            <Grid width='75%'>
+              <Typography
+                fontSize='15px'
+                color='white'>
+                Accounting
+              </Typography>
+            </Grid>
           </Grid>
         </Grid>
       </Grid>
       <Grid
-        width='85%'
+        width='84%'
         display='flex'
         height='100%'
-        marginLeft='180px'
+        marginLeft='191px'
         flexDirection='column'
         justifyContent='start'
         gap='40px'
