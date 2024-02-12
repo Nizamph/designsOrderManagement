@@ -1,13 +1,14 @@
-import { Grid, Paper, Typography } from '@mui/material';
+import { Grid, Paper, Typography, useMediaQuery } from '@mui/material';
 import React from 'react';
 import statIcon from './icons/statIcon.png';
 import ArrowUp from './icons/upArrow.png';
 import ArrowDown from './icons/arrow-right.png';
 const StatCard = ({ growth, type, totalFigure, iconName }) => {
+  const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down('sm'));
   return (
     <Paper
       sx={{
-        width: '242px',
+        width: !isSmallScreen ? '240px' : '100%',
         maxHeight: '194px',
         padding: '18px',
         display: 'flex',

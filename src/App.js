@@ -13,7 +13,6 @@ import SignUp from './SignUp';
 import Invoice from './Invoice';
 import Dashboard from './Dashboard';
 import ProgressBar from './ProgressBar';
-import MultiselectorInbox from './MultiselectorInbox';
 
 function App() {
   const theme = createTheme({
@@ -80,10 +79,6 @@ function App() {
           <Route
             path='/dashboard'
             element={<Dashboard />}
-          />
-          <Route
-            path='/multiselector'
-            element={<MultiselectorInbox />}
           />
         </Routes>
       </ThemeProvider>

@@ -40,6 +40,7 @@ const SummaryTable = () => {
         width='100%'
         display='flex'
         flexDirection={isSmallScreen ? 'column' : 'row'}
+        gap={isSmallScreen ? '13px' : ''}
         justifyContent='space-between'
         alignItems={!isSmallScreen ? 'center' : 'start'}>
         <Grid
@@ -57,13 +58,13 @@ const SummaryTable = () => {
           alignItems='center'
           justifyContent='end'>
           <FormControl sx={{ marginRight: '6px' }}>
-            <InputLabel id='demo-simple-select-label'>Age</InputLabel>
+            <InputLabel id='demo-simple-select-label'>Project</InputLabel>
             <Select
               labelId='demo-simple-select-label'
               id='demo-simple-select'
-              sx={{ height: '40px', width: '100px' }}
+              sx={{ height: '40px', width: '100px', borderRadius: '40px' }}
               value={34}
-              label='Age'
+              label='Project'
               onChange={() => {}}>
               <MenuItem value={10}>Ten</MenuItem>
               <MenuItem value={20}>Twenty</MenuItem>
@@ -71,13 +72,15 @@ const SummaryTable = () => {
             </Select>
           </FormControl>
           <FormControl sx={{ marginRight: '6px' }}>
-            <InputLabel id='demo-simple-select-label'>Age</InputLabel>
+            <InputLabel id='demo-simple-select-label'>
+              Project manager
+            </InputLabel>
             <Select
               labelId='demo-simple-select-label'
-              sx={{ height: '40px', width: '100px' }}
+              sx={{ height: '40px', width: '125px', borderRadius: '40px' }}
               id='demo-simple-select'
               value={34}
-              label='Age'
+              label='Project manager'
               onChange={() => {}}>
               <MenuItem value={10}>Ten</MenuItem>
               <MenuItem value={20}>Twenty</MenuItem>
@@ -85,13 +88,13 @@ const SummaryTable = () => {
             </Select>
           </FormControl>
           <FormControl>
-            <InputLabel id='demo-simple-select-label'>Age</InputLabel>
+            <InputLabel id='demo-simple-select-label'>Status</InputLabel>
             <Select
               labelId='demo-simple-select-label'
-              sx={{ height: '40px', width: '100px' }}
+              sx={{ height: '40px', width: '100px', borderRadius: '40px' }}
               id='demo-simple-select'
               value={34}
-              label='Age'
+              label='Status'
               onChange={() => {}}>
               <MenuItem value={10}>Ten</MenuItem>
               <MenuItem value={20}>Twenty</MenuItem>

@@ -17,6 +17,7 @@ import CIrcularProgressBar from './CIrcularProgressBar';
 import Project from './icons/projectIcon.png';
 import ResourseIcon from './icons/resources.png';
 import StatIcon from './icons/statIcon.png';
+import json2mq from 'json2mq';
 const totalProjects = 150;
 const completedProjects = 30;
 const ongoingProjects = 30;
@@ -24,6 +25,14 @@ const delayedProjects = 30;
 
 const MainBody = () => {
   const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down('sm'));
+  const isMediumScreen = useMediaQuery((theme) => theme.breakpoints.down('md'));
+
+  const ipadPro = useMediaQuery(
+    json2mq({
+      maWidth: 1023,
+    })
+  );
+
   return (
     <Grid
       width='100%'
@@ -48,12 +57,14 @@ const MainBody = () => {
           <Grid width='20%'>
             <Typography
               marginRight='20px'
+              fontSize='22px'
+              fontWeight='semi-bold'
               marginLeft='20px'>
               Overview
             </Typography>
           </Grid>
           <Grid
-            width={isSmallScreen ? '30%' : '10%'}
+            width={isSmallScreen ? '30%' : '13%'}
             display='flex'
             flexDirection='column'
             marginRight='20px'
@@ -61,12 +72,13 @@ const MainBody = () => {
             alignItems='center'
             justifyContent='center'>
             <FormControl fullWidth>
-              <InputLabel id='demo-simple-select-label'>Age</InputLabel>
+              <InputLabel id='demo-simple-select-label'>Value</InputLabel>
               <Select
                 labelId='demo-simple-select-label'
                 id='demo-simple-select'
                 value={34}
-                label='Age'
+                sx={{ borderRadius: '40px', height: '40px' }}
+                label='Value'
                 onChange={() => {}}>
                 <MenuItem value={10}>Ten</MenuItem>
                 <MenuItem value={20}>Twenty</MenuItem>
@@ -79,8 +91,8 @@ const MainBody = () => {
           maxWidth='100%'
           display='flex'
           gap='9px'
-          marginRight='6px'
-          marginLeft='6px'
+          marginRight='8px'
+          marginLeft='12px'
           justifyContent='space-between'
           flexWrap='wrap'
           alignItems='center'>
@@ -115,7 +127,7 @@ const MainBody = () => {
         justifyContent='space-between'>
         <Paper
           sx={{
-            width: !isSmallScreen ? '55%' : '100%',
+            width: !isSmallScreen || !isMediumScreen ? '55%' : '100%',
             padding: '14px',
             marginLeft: !isSmallScreen ? '20px' : '',
             minHeight: '359px',
@@ -125,7 +137,7 @@ const MainBody = () => {
         </Paper>
         <Paper
           sx={{
-            width: !isSmallScreen ? '39%' : '100%',
+            width: !isSmallScreen || !isMediumScreen ? '39%' : '100%',
             padding: '15px',
             display: 'flex',
             minHeight: '359px',

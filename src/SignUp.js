@@ -25,6 +25,20 @@ const SignUp = () => {
     })
   );
 
+  const ipadPro = useMediaQuery(
+    json2mq({
+      maxWidth: 1024,
+    })
+  );
+  const galaxyFold = useMediaQuery(
+    json2mq({
+      minWidth: 0,
+      maxWidth: 280,
+      minHeight: 0,
+      maxHeight: 653,
+    })
+  );
+
   const bigScreen = useMediaQuery(
     json2mq({
       minWidth: 1366,
@@ -41,8 +55,8 @@ const SignUp = () => {
       <Box
         sx={{
           backgroundColor: '#ECBC76',
-          width: '50%',
-          position: 'relative',
+          width: galaxyFold ? '100%' : '50%',
+          height: '100vh',
         }}>
         <Grid
           display='flex'
@@ -60,11 +74,12 @@ const SignUp = () => {
               Logo
             </Typography>
           </Grid>
-          {!isMediumScreen && (
+          {!isMediumScreen && !ipadPro && (
             <Grid
+              position='relative'
               item
               xs={12}
-              marginLeft='149px'>
+              marginLeft='127px'>
               <img
                 src={Saly3}
                 alt='sali image'
@@ -77,7 +92,7 @@ const SignUp = () => {
       <Paper
         sx={{
           position: 'absolute',
-          maxWidth: !isSmallScreen ? '465px' : '326px',
+          maxWidth: galaxyFold ? '270px' : !isSmallScreen ? '465px' : '326px',
           maxHeight: '741px',
           borderRadius: '40px',
           top: iphoneSE
@@ -86,17 +101,24 @@ const SignUp = () => {
             ? '8rem'
             : isMediumScreen
             ? '15rem'
+            : ipadPro
+            ? '13rem'
             : bigScreen
             ? '123px'
-            : '52px',
-          left: iphoneSE
+            : '26px',
+          left: galaxyFold
+            ? '4px'
+            : iphoneSE
             ? '25px'
             : isSmallScreen
             ? '40px'
             : isMediumScreen
             ? '10rem'
-            : '28rem',
+            : ipadPro
+            ? '16rem'
+            : '25rem',
           padding: iphoneSE ? '35px' : '49px',
+          paddingX: galaxyFold ? '25px' : '',
           zIndex: '10',
         }}>
         <Grid
@@ -180,11 +202,10 @@ const SignUp = () => {
       </Paper>
       <Box
         sx={{
-          width: '50%',
-          position: 'relative',
+          width: galaxyFold ? '0%' : '50%',
           bgcolor: isMediumScreen || isSmallScreen ? '#ECBC76' : '',
         }}>
-        {!isMediumScreen && (
+        {!isMediumScreen && !ipadPro && (
           <Grid
             xs={6}
             display='flex'
@@ -195,7 +216,7 @@ const SignUp = () => {
               <img
                 src={Saly2}
                 alt='sali image'
-                style={{ width: '450px', height: '450px' }}
+                style={{ width: '436px', height: '400px' }}
               />
             </Grid>
           </Grid>

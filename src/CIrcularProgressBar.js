@@ -48,11 +48,7 @@ const CIrcularProgressBar = ({
             '--fill': '#1A932E',
           }}></div>
       </div>
-      <Box
-        position='absolute'
-        top='130px'
-        left='196px'
-        right='0'>
+      <Box position='absolute'>
         <Typography
           fontSize='28px'
           fontWeight='bold'>

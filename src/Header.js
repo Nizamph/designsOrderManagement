@@ -1,4 +1,10 @@
-import { Grid, InputBase, Typography, alpha } from '@mui/material';
+import {
+  Grid,
+  InputBase,
+  Typography,
+  alpha,
+  useMediaQuery,
+} from '@mui/material';
 import React from 'react';
 import SearchIcon from '@mui/icons-material/Search';
 import styled from '@emotion/styled';
@@ -46,32 +52,31 @@ const Header = () => {
       },
     },
   }));
+
+  const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down('sm'));
+  const isMediumScreen = useMediaQuery((theme) => theme.breakpoints.down('md'));
   return (
     <Grid
       width='100%'
       display='flex'
       height='10%'
+      marginTop='15px'
       alignItems='center'
       justifyContent='space-between'>
       <Grid
-        width='30%'
+        width='80%'
         display='flex'
-        alignItems='center'
+        flexDirection={isSmallScreen ? 'column' : 'row'}
+        alignItems={isSmallScreen ? 'start' : 'center'}
         marginRight='20px'
         marginLeft='20px'
-        justifyContent='start'>
+        justifyContent='space-between'>
         <Typography
           padding='2px'
-          margin='2px'>
+          fontSize={isMediumScreen ? '20px' : '32px'}
+          fontWeight='semi-bold'>
           Dashboard
         </Typography>
-      </Grid>
-      <Grid
-        width='70%'
-        display='flex'
-        alignItems='center'
-        justifyContent='end'
-        gap='70px'>
         <Search>
           <SearchIconWrapper>
             <SearchIcon />
@@ -81,6 +86,12 @@ const Header = () => {
             inputProps={{ 'aria-label': 'search' }}
           />
         </Search>
+      </Grid>
+      <Grid
+        width={isSmallScreen ? '40%' : '30%'}
+        display='flex'
+        alignItems='center'
+        justifyContent='end'>
         <Profile />
       </Grid>
     </Grid>
