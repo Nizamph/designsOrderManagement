@@ -56,6 +56,7 @@ const SignIn = () => {
     <Grid
       display='flex'
       minHeight='100vh'
+      component='form'
       xs={12}
       width='100%'>
       <Box
@@ -96,6 +97,8 @@ const SignIn = () => {
         </Grid>
       </Box>
       <Paper
+        component='form'
+        onSubmit={handleSubmit}
         sx={{
           position: 'absolute',
           maxWidth: galaxyFold ? '270px' : !isSmallScreen ? '500px' : '326px',
@@ -175,11 +178,15 @@ const SignIn = () => {
           <TextField
             id='outlined-basic'
             label='email'
+            value={email}
+            onChange={handleEmailChange}
             fullWidth
           />
           <TextField
             id='outlined-basic'
             label='password'
+            value={password}
+            onChange={handlePasswordChange}
             fullWidth
           />
           <Typography
@@ -188,6 +195,7 @@ const SignIn = () => {
             Forget Password
           </Typography>
           <Button
+            type='submit'
             sx={{
               bgcolor: '#E48700',
               color: 'white',
@@ -255,6 +263,11 @@ const SignIn = () => {
           </Grid>
         )}
       </Box>
+      {alert && status == '400' ? (
+        <Alert severity='error'>{alertContent}</Alert>
+      ) : (
+        <></>
+      )}
     </Grid>
   );
 };

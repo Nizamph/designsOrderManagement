@@ -21,15 +21,24 @@ import salarySlip from './icons/Left ContentCopy.png';
 const Invoice = () => {
   const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down('sm'));
   console.log('isSmallScreen', isSmallScreen);
-  function createData(name, calories, fat, carbs, protein) {
-    return { name, calories, fat, carbs, protein };
+  function createData(
+    name,
+    calories,
+    fat,
+    carbs,
+    protein,
+    fibre,
+    unknow1,
+    unnkow2
+  ) {
+    return { name, calories, fat, carbs, protein, fibre, unknow1, unnkow2 };
   }
   const rows = [
-    createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-    createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-    createData('Eclair', 262, 16.0, 24, 6.0),
-    createData('Cupcake', 305, 3.7, 67, 4.3),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
+    createData('Frozen yoghurt', 159, 6.0, 24, 4.0, 500, 500, 600),
+    createData('Ice cream sandwich', 237, 9.0, 37, 4.3, 500, 500, 600),
+    createData('Eclair', 262, 16.0, 24, 6.0, 500, 500, 600),
+    createData('Cupcake', 305, 3.7, 67, 4.3, 500, 500, 600),
+    createData('Gingerbread', 356, 16.0, 49, 3.9, 500, 500, 600),
   ];
 
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -63,7 +72,7 @@ const Invoice = () => {
         sx={{
           padding: '2rem',
           display: 'flex',
-          maxWidth: '650px',
+          maxWidth: '80%',
           gap: '10px',
           flexDirection: 'column',
           justifyContent: 'start',
@@ -84,11 +93,11 @@ const Invoice = () => {
             sx={{
               padding: '16px',
               bgcolor: '#F6F8FC',
-              height: '100%',
+              minHeight: '345px',
               width: !isSmallScreen ? '36%' : '40%',
               display: 'flex',
               flexDirection: 'column',
-              justifyContent: 'start',
+              justifyContent: 'center',
               gap: '14px',
               width: '100%',
               borderRadius: '20px',
@@ -131,14 +140,31 @@ const Invoice = () => {
               flexDirection='column'
               gap='3px'
               alignContent='center'>
-              <Typography fontSize='8px'>INVOICE TO:</Typography>
+              <Typography fontSize='12px'>INVOICE TO:</Typography>
               <Typography
                 fontWeight='bold'
-                fontSize='14px'>
+                fontSize='17px'>
                 Mauro Saucad
               </Typography>
-              <Typography fontSize='10px'>(612) 856 - 0989</Typography>
-              <Typography fontSize='10px'>
+              <Typography fontSize='12px'>(612) 856 - 0989</Typography>
+              <Typography fontSize='12px'>
+                Pablo Alto, San Francisco, CA 92102, United States of America
+              </Typography>
+            </Grid>
+            <Grid
+              sx={{ width: '100%', height: '43%' }}
+              display='flex'
+              flexDirection='column'
+              gap='3px'
+              alignContent='center'>
+              <Typography fontSize='12px'>INVOICE TO:</Typography>
+              <Typography
+                fontWeight='bold'
+                fontSize='17px'>
+                Mauro Saucad
+              </Typography>
+              <Typography fontSize='12px'>(612) 856 - 0989</Typography>
+              <Typography fontSize='12px'>
                 Pablo Alto, San Francisco, CA 92102, United States of America
               </Typography>
             </Grid>
@@ -220,169 +246,322 @@ const Invoice = () => {
               </Grid>
             </Paper>
           </Grid>
-          {!isSmallScreen && (
-            <TableContainer component={Paper}>
-              <Table
-                sx={{ minWidth: 520 }}
-                aria-label='simple table'>
-                <TableHead>
-                  <TableRow>
+
+          <TableContainer component={Paper}>
+            <Table
+              sx={{
+                minWidth: 520,
+                overflowX: 'auto',
+                '&::-webkit-scrollbar': {
+                  display: 'none',
+                },
+                '@media (max-width: 520px)': {
+                  minWidth: '100%', // Make table full width on small screens
+                },
+              }}
+              aria-label='simple table'>
+              <TableHead>
+                <TableRow>
+                  <TableCell
+                    align='left'
+                    sx={{
+                      borderBottom: 'none',
+                      color: '#868DA6',
+                    }}>
+                    ITEM
+                  </TableCell>
+                  <TableCell
+                    sx={{ borderBottom: 'none', color: '#868DA6' }}
+                    align='right'
+                    color='#868DA6'>
+                    QTY
+                  </TableCell>
+                  <TableCell
+                    sx={{ borderBottom: 'none', color: '#868DA6' }}
+                    align='right'
+                    color='#868DA6'>
+                    RATE
+                  </TableCell>
+                  <TableCell
+                    sx={{ borderBottom: 'none', color: '#868DA6' }}
+                    align='right'
+                    color='#868DA6'>
+                    AMOUNT
+                  </TableCell>
+                  <TableCell
+                    sx={{ borderBottom: 'none', color: '#868DA6' }}
+                    align='right'
+                    color='#868DA6'>
+                    GST Rate
+                  </TableCell>
+                  <TableCell
+                    sx={{ borderBottom: 'none', color: '#868DA6' }}
+                    align='right'
+                    color='#868DA6'>
+                    CGST
+                  </TableCell>
+                  <TableCell
+                    sx={{ borderBottom: 'none', color: '#868DA6' }}
+                    align='right'
+                    color='#868DA6'>
+                    SGST
+                  </TableCell>
+                  <TableCell
+                    sx={{ borderBottom: 'none', color: '#868DA6' }}
+                    align='right'
+                    color='#868DA6'>
+                    TOTAL
+                  </TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {rows.map((row) => (
+                  <TableRow
+                    key={row.name}
+                    sx={{
+                      '&:last-child td, &:last-child th': { border: 0 },
+                      bgcolor: '#F6F8FC',
+                    }}>
                     <TableCell
-                      align='left'
-                      sx={{
-                        borderBottom: 'none',
-                        color: '#868DA6',
-                      }}>
-                      Description
+                      component='th'
+                      sx={{ borderBottom: 'none' }}
+                      scope='row'>
+                      <Typography
+                        color='#5D6481'
+                        fontSize='15px'
+                        sx={{ fontWeight: 'bold' }}>
+                        {row.name}
+                      </Typography>
                     </TableCell>
                     <TableCell
-                      sx={{ borderBottom: 'none', color: '#868DA6' }}
                       align='right'
-                      color='#868DA6'>
-                      QTY
+                      sx={{ borderBottom: 'none' }}>
+                      <Typography color='#868DA6'>{row.calories}</Typography>
                     </TableCell>
                     <TableCell
-                      sx={{ borderBottom: 'none', color: '#868DA6' }}
                       align='right'
-                      color='#868DA6'>
-                      PRICE
+                      color='#868DA6'
+                      sx={{ borderBottom: 'none' }}>
+                      <Typography color='#868DA6'>{row.fat}</Typography>
                     </TableCell>
                     <TableCell
-                      sx={{ borderBottom: 'none', color: '#868DA6' }}
                       align='right'
-                      color='#868DA6'>
-                      TOTAL
+                      sx={{ borderBottom: 'none' }}>
+                      <Typography
+                        fontSize='15px'
+                        fontWeight='bold'>
+                        {row.carbs}
+                      </Typography>
+                    </TableCell>
+                    <TableCell
+                      align='right'
+                      sx={{ borderBottom: 'none' }}>
+                      <Typography
+                        fontSize='15px'
+                        fontWeight='bold'>
+                        {row.fibre}
+                      </Typography>
+                    </TableCell>
+                    <TableCell
+                      align='right'
+                      sx={{ borderBottom: 'none' }}>
+                      <Typography
+                        fontSize='15px'
+                        fontWeight='bold'>
+                        {row.unknow1}
+                      </Typography>
+                    </TableCell>
+                    <TableCell
+                      align='right'
+                      sx={{ borderBottom: 'none' }}>
+                      <Typography
+                        fontSize='15px'
+                        fontWeight='bold'>
+                        {row.unnkow2}
+                      </Typography>
+                    </TableCell>
+                    <TableCell
+                      align='right'
+                      sx={{ borderBottom: 'none' }}>
+                      <Typography
+                        fontSize='15px'
+                        fontWeight='bold'>
+                        {row.unnkow2}
+                      </Typography>
                     </TableCell>
                   </TableRow>
-                </TableHead>
-                <TableBody>
-                  {rows.map((row) => (
-                    <TableRow
-                      key={row.name}
-                      sx={{
-                        '&:last-child td, &:last-child th': { border: 0 },
-                        bgcolor: '#F6F8FC',
-                      }}>
-                      <TableCell
-                        component='th'
-                        sx={{ borderBottom: 'none' }}
-                        scope='row'>
-                        <Typography
-                          color='#5D6481'
-                          fontSize='15px'
-                          sx={{ fontWeight: 'bold' }}>
-                          {row.name}
-                        </Typography>
-                      </TableCell>
-                      <TableCell
-                        align='right'
-                        sx={{ borderBottom: 'none' }}>
-                        <Typography color='#868DA6'>{row.calories}</Typography>
-                      </TableCell>
-                      <TableCell
-                        align='right'
-                        color='#868DA6'
-                        sx={{ borderBottom: 'none' }}>
-                        <Typography color='#868DA6'>{row.fat}</Typography>
-                      </TableCell>
-                      <TableCell
-                        align='right'
-                        sx={{ borderBottom: 'none' }}>
-                        <Typography
-                          fontSize='15px'
-                          fontWeight='bold'>
-                          {row.carbs}
-                        </Typography>
-                      </TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </TableContainer>
-          )}
-          {isSmallScreen &&
-            rows.map((itm) => (
-              <Paper sx={{ padding: '6px', borderRadius: '8px' }}>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+          <Grid
+            display='flex'
+            width='100%'
+            justifyContent='space-between'
+            alignItems='center'>
+            <Grid
+              display='flex'
+              flexDirection='column'
+              justifyContent='start'
+              alignItems='start'
+              width='70%'>
+              <Typography
+                fontSize='24px'
+                color='#2388FF'
+                fontWeight='bold'>
+                Twelve thousand Rupees Only
+              </Typography>
+            </Grid>
+            <Grid
+              display='flex'
+              width='25%'
+              justifyContent='start'
+              flexDirection='column'>
+              <Grid
+                display='flex'
+                alignItems='center'
+                justifyContent='space-between'>
+                <Typography
+                  color='#868DA6'
+                  fontSize='7px'
+                  textAlign='right'>
+                  DISCOUNT
+                </Typography>
+                <Typography
+                  textAlign='left'
+                  fontSize='12px'
+                  color='black'>
+                  30
+                </Typography>
+              </Grid>
+              <Grid
+                display='flex'
+                alignItems='center'
+                justifyContent='space-between'>
+                <Typography
+                  color='#868DA6'
+                  fontSize='10px'
+                  textAlign='right'>
+                  TOTAL AMOUNT
+                </Typography>
+                <Typography
+                  textAlign='right'
+                  fontSize='24px'
+                  color='#2388FF'
+                  fontWeight='bold'>
+                  $120000
+                </Typography>
+              </Grid>
+              <Grid
+                display='flex'
+                alignItems='center'
+                justifyContent='space-between'>
+                <Typography
+                  color='#868DA6'
+                  fontSize='10px'
+                  textAlign='right'>
+                  PAID AMOUNT
+                </Typography>
+                <Typography
+                  textAlign='left'
+                  fontSize='15px'
+                  color='black'>
+                  122
+                </Typography>
+              </Grid>
+              <Grid
+                display='flex'
+                alignItems='center'
+                justifyContent='space-between'>
+                <Typography
+                  color='#868DA6'
+                  fontSize='10px'
+                  textAlign='right'>
+                  DUE AMOUNT
+                </Typography>
+                <Typography
+                  textAlign='left'
+                  fontSize='15px'
+                  color='black'>
+                  122
+                </Typography>
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid>
+            <Grid width='100%'>
+              <Paper
+                sx={{
+                  display: 'flex',
+                  padding: '10px',
+                  width: '35%',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                }}>
                 <Grid
                   display='flex'
-                  minWidth='32s0px'
-                  justifyContent='space-between'
-                  alignItems='center'>
+                  gap='3px'
+                  flexDirection='column'
+                  alignContent='center'>
                   <Typography
-                    padding='3px'
-                    color='#868DA6'
-                    margin='3px'>
-                    Desciption
+                    fontWeight='bold'
+                    fontSize='12px'
+                    color='#5D6481'>
+                    Account HolderName
                   </Typography>
                   <Typography
-                    align='left'
-                    padding='3px'
-                    margin='3px'
-                    color='#5D6481'
-                    fontSize='15px'
-                    bgcolor='#F6F8FC'
-                    sx={{ fontWeight: 'bold' }}>
-                    {itm.name}
+                    fontWeight='bold'
+                    fontSize='12px'
+                    color='#5D6481'>
+                    Account type
+                  </Typography>
+                  <Typography
+                    fontWeight='bold'
+                    fontSize='12px'
+                    color='#5D6481'>
+                    IFSC
+                  </Typography>
+                  <Typography
+                    fontWeight='bold'
+                    fontSize='12px'
+                    color='#5D6481'>
+                    BANK
                   </Typography>
                 </Grid>
                 <Grid
                   display='flex'
-                  width='100%'
-                  minWidth='330px'
-                  justifyContent='space-between'
-                  gap='20px'
-                  alignItems='center'>
+                  gap='3px'
+                  flexDirection='column'
+                  alignContent='center'>
                   <Typography
-                    padding='3px'
-                    color='#868DA6'
-                    margin='3px'>
-                    Quantity
+                    fontWeight='bold'
+                    fontSize='12px'
+                    color='#5D6481'>
+                    Rasheed
                   </Typography>
                   <Typography
-                    padding='3px'
-                    margin='3px'
-                    bgcolor='#F6F8FC'>
-                    {itm.calories}
-                  </Typography>
-                </Grid>
-                <Grid
-                  display='flex'
-                  width='100%'
-                  minWidth='330px'
-                  gap='10px'
-                  justifyContent='space-between'
-                  alignItems='center'>
-                  <Typography
-                    padding='3px'
-                    color='#868DA6'
-                    margin='3px'>
-                    Amount
+                    fontWeight='bold'
+                    fontSize='12px'
+                    color='#5D6481'>
+                    Current
                   </Typography>
                   <Typography
-                    padding='3px'
-                    margin='3px'
-                    bgcolor='#F6F8FC'
-                    marginLeft='10px'>
-                    {itm.carbs}
+                    fontWeight='bold'
+                    fontSize='12px'
+                    color='#5D6481'>
+                    3940
+                  </Typography>
+                  <Typography
+                    fontWeight='bold'
+                    fontSize='12px'
+                    color='#5D6481'>
+                    HDFC
                   </Typography>
                 </Grid>
               </Paper>
-            ))}
-          <Grid width='100%'>
-            <Typography
-              color='#868DA6'
-              fontSize='10px'
-              textAlign='right'>
-              TOTAL AMOUNT
-            </Typography>
-            <Typography
-              textAlign='right'
-              fontSize='24px'
-              color='#2388FF'
-              fontWeight='bold'>
-              $120000
-            </Typography>
+            </Grid>
           </Grid>
+
           <Grid>
             <Typography
               textAlign='left'
@@ -395,10 +574,30 @@ const Invoice = () => {
               textAlign='left'
               fontSize='10px'
               color='#868DA6'>
-              Fees and payment terms will be established in the contract or
-              agreement prior to the commencement of the project. An initial
-              deposit will be required before any design work begins. We reserve
-              the right to suspend or halt work in the event of non-payment.
+              1. Please pay within 15 days from the date of invoice, overdue
+              interest @ 14% will be charged on delayed payments.
+            </Typography>
+            <Typography
+              textAlign='left'
+              fontSize='10px'
+              color='#868DA6'>
+              2. Please quote invoice number when remitting funds.
+            </Typography>
+          </Grid>
+          <Grid>
+            <Typography
+              textAlign='left'
+              fontSize='16px'
+              color='#5D6481'
+              fontWeight='bold'>
+              Attachements:
+            </Typography>
+            <Typography
+              textAlign='left'
+              fontSize='12px'
+              color='#868DA6'>
+              1. Please pay within 15 days from the date of invoice, overdue
+              interest @ 14% will be charged on delayed payments.
             </Typography>
           </Grid>
         </Grid>
